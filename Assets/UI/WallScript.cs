@@ -1,21 +1,27 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class WallScript : MonoBehaviour
+public class WallScript : MonoBehaviour, IPointerDownHandler
 {
 
     [SerializeField]
     private TextMeshProUGUI HpText;
 
-    // Start is called before the first frame update
+    private int hp = 100;
+    private int hp_max = 100;
+
     void Start()
     {
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        HpText.text = $"{hp} / {hp_max}";
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        hp -= Random.Range(1, 5);
     }
 }
