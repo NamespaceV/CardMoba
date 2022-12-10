@@ -32,7 +32,7 @@ public class MainUi : MonoBehaviour
 
         _base = Instantiate(BasePrefab, transform);
 
-        _base.transform.localPosition = new Vector3(MARGIN, -MARGIN -300, 0);
+        _base.transform.localPosition = new Vector3(MARGIN, -TOP_BAR_H - MARGIN -300, 0);
         for (int row = 0; row < 3; ++row)
         {
             for (int n = 0; n < 3; ++n) {
