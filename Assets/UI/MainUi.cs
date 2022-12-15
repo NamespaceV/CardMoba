@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using Zenject;
 
 public class MainUi : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class MainUi : MonoBehaviour
     public GameObject EnemyPrefab;
 
     private Canvas _canvas;
+
+    [Inject]
+    DiContainer diContainer;
 
     private GameObject _topBar;
     private GameObject _base;
@@ -30,31 +34,31 @@ public class MainUi : MonoBehaviour
     {
         _canvas = transform.parent.GetComponent<Canvas>();
 
-        _base = Instantiate(BasePrefab, transform);
+        _base = diContainer.InstantiatePrefab(BasePrefab, transform);
 
         _base.transform.localPosition = new Vector3(MARGIN, -TOP_BAR_H - MARGIN -300, 0);
         for (int row = 0; row < 3; ++row)
         {
             for (int n = 0; n < 3; ++n) {
-                _units[row, n] = Instantiate(UnitPrefab, transform);
+                _units[row, n] = diContainer.InstantiatePrefab(UnitPrefab, transform);
                 _units[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + n * (UNIT_WIDTH + WALL_WIDTH + 2*MARGIN),
                     -TOP_BAR_H - MARGIN -row * 300, 0);
             }
             for (int n = 0; n < 2; ++n)
             {
-                _walls[row, n] = Instantiate(WallPrefab, transform);
+                _walls[row, n] = diContainer.InstantiatePrefab(WallPrefab, transform);
                 _walls[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + 2* MARGIN + UNIT_WIDTH + n * (UNIT_WIDTH + WALL_WIDTH + 2 * MARGIN),
                     -TOP_BAR_H - MARGIN -row * 300, 0);
             }
             for (int n = 0; n < 3; ++n)
             {
-                _enemies[row, n] = Instantiate(EnemyPrefab, transform);
+                _enemies[row, n] = diContainer.InstantiatePrefab(EnemyPrefab, transform);
                 _enemies[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + 3*(UNIT_WIDTH + WALL_WIDTH + 2* MARGIN) + MARGIN + n * (UNIT_WIDTH + MARGIN),
                     -TOP_BAR_H - MARGIN - row * 300, 0);
             }
         }
 
-        _topBar = Instantiate(TopBarPrefab, transform);
+        _topBar = diContainer.InstantiatePrefab(TopBarPrefab, transform);
     }
 
     internal void TestSpawn()
