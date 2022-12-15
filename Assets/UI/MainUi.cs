@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -17,9 +18,9 @@ public class MainUi : MonoBehaviour
 
     private GameObject _topBar;
     private GameObject _base;
-    private GameObject[,] _units  = new GameObject[3, 3];
-    private GameObject[,] _walls = new GameObject[3, 2];
-    private GameObject[,] _enemies = new GameObject[3, 3];
+    private UnitScript[,] _units  = new UnitScript[3, 3];
+    private WallScript[,] _walls = new WallScript[3, 2];
+    private EnemyScript[,] _enemies = new EnemyScript[3, 3];
 
 
     const int MARGIN = 10;
@@ -37,24 +38,27 @@ public class MainUi : MonoBehaviour
         _base = diContainer.InstantiatePrefab(BasePrefab, transform);
 
         _base.transform.localPosition = new Vector3(MARGIN, -TOP_BAR_H - MARGIN -300, 0);
-        for (int row = 0; row < 3; ++row)
+        for (int lane = 0; lane < 3; ++lane)
         {
             for (int n = 0; n < 3; ++n) {
-                _units[row, n] = diContainer.InstantiatePrefab(UnitPrefab, transform);
-                _units[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + n * (UNIT_WIDTH + WALL_WIDTH + 2*MARGIN),
-                    -TOP_BAR_H - MARGIN -row * 300, 0);
+                _units[lane, n] = diContainer.InstantiatePrefab(UnitPrefab, transform).GetComponent<UnitScript>();
+                _units[lane, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + n * (UNIT_WIDTH + WALL_WIDTH + 2*MARGIN),
+                    -TOP_BAR_H - MARGIN -lane * 300, 0);
+                _units[lane, n].Init(lane, n);
             }
             for (int n = 0; n < 2; ++n)
             {
-                _walls[row, n] = diContainer.InstantiatePrefab(WallPrefab, transform);
-                _walls[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + 2* MARGIN + UNIT_WIDTH + n * (UNIT_WIDTH + WALL_WIDTH + 2 * MARGIN),
-                    -TOP_BAR_H - MARGIN -row * 300, 0);
+                _walls[lane, n] = diContainer.InstantiatePrefab(WallPrefab, transform).GetComponent<WallScript>();
+                _walls[lane, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + 2* MARGIN + UNIT_WIDTH + n * (UNIT_WIDTH + WALL_WIDTH + 2 * MARGIN),
+                    -TOP_BAR_H - MARGIN -lane * 300, 0);
+                _walls[lane, n].Init(lane, n);
             }
             for (int n = 0; n < 3; ++n)
             {
-                _enemies[row, n] = diContainer.InstantiatePrefab(EnemyPrefab, transform);
-                _enemies[row, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + 3*(UNIT_WIDTH + WALL_WIDTH + 2* MARGIN) + MARGIN + n * (UNIT_WIDTH + MARGIN),
-                    -TOP_BAR_H - MARGIN - row * 300, 0);
+                _enemies[lane, n] = diContainer.InstantiatePrefab(EnemyPrefab, transform).GetComponent<EnemyScript>();
+                _enemies[lane, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + 3*(UNIT_WIDTH + WALL_WIDTH + 2* MARGIN) + MARGIN + n * (UNIT_WIDTH + MARGIN),
+                    -TOP_BAR_H - MARGIN - lane * 300, 0);
+                _enemies[lane, n].Init(lane, n);
             }
         }
 

@@ -2,7 +2,7 @@
 {
     internal class Tower
     {
-        public int baseHp = 500;
-        public int baseHpMax = 500;
+        public int hp = 500;
+        public int hpMax = 500;
     }
 }

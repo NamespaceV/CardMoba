@@ -1,7 +1,9 @@
+using Assets.Logic;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Zenject;
 
 public class EnemyScript : MonoBehaviour, IPointerDownHandler
 {
@@ -14,23 +16,30 @@ public class EnemyScript : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private TextMeshProUGUI SkillsText;
 
-    private int hp = 100;
-    private int hp_max = 100;
+    [Inject]
+    private BoardState bs;
+
+    private int lane;
+    private int position;
 
     void Start()
     {
-        var names = new List<string>() { "Orc", "Goblin", "Troll" };
-        var r = Random.Range(0, names.Count);
-        NameText.text = names[r];
     }
 
     void Update()
     {
-        HpText.text = $"{hp} / {hp_max}";
+        NameText.text = bs.enemies[lane, position].Name;
+        HpText.text = $"{bs.enemies[lane,position].hp} / {bs.enemies[lane, position].hpMax}";
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        hp -= Random.Range(1, 5);
+        bs.hitEnemy(lane, position, Random.Range(1, 5));
+    }
+
+    internal void Init(int lane, int position)
+    {
+        this.lane = lane;
+        this.position = position;
     }
 }

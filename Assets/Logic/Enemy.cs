@@ -1,9 +1,18 @@
-﻿namespace Assets.Logic
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace Assets.Logic
 {
     internal class Enemy
     {
         public string Name;
-        public int baseHp = 500;
-        public int baseHpMax = 500;
+        public int hp = 500;
+        public int hpMax = 500;
+
+        public Enemy() {
+            var names = new List<string>() { "Orc", "Goblin", "Troll" };
+            var r = Random.Range(0, names.Count);
+            Name = names[r];
+        }
     }
 }
