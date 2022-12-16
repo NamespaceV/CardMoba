@@ -26,6 +26,7 @@ namespace Assets.Logic
 
         internal void EndTurn()
         {
+            if (hp == 0) return;
             bs.enemies[lane, 0].Hit(Random.Range(5, 10));
             bs.enemies[lane, 1].Hit(Random.Range(5, 10));
             bs.enemies[lane, 2].Hit(Random.Range(5, 10));
@@ -33,7 +34,12 @@ namespace Assets.Logic
 
         internal void Hit(int v)
         {
+            if (hp == 0) return;
             hp -= v;
+            if (hp <= 0) {
+                hp = 0;
+                Name = "Dead " + Name;
+            }
         }
     }
 }

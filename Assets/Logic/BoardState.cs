@@ -1,4 +1,6 @@
-﻿namespace Assets.Logic
+﻿using System;
+
+namespace Assets.Logic
 {
     class BoardState
     {
@@ -80,6 +82,11 @@
                     enemies[l, i].EndTurn();
                 }
             }
+        }
+
+        internal void Pay(int g)
+        {
+            Gold -= g;
         }
     }
 }

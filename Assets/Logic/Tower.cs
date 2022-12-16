@@ -30,7 +30,12 @@ namespace Assets.Logic
 
         internal void Hit(int v)
         {
+            if (hp == 0) return;
             hp -= v;
+            if (hp < 0)
+            {
+                hp = 0;
+            }
         }
 
         internal void Upgrade()

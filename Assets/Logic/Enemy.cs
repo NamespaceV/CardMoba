@@ -26,18 +26,24 @@ namespace Assets.Logic
 
         internal void EndTurn()
         {
+            if (hp == 0) return;
             bs.units[lane, 2].Hit(Random.Range(5, 10));
             bs.towers[lane, 1].Hit(Random.Range(5, 10));
             bs.units[lane, 1].Hit(Random.Range(5, 10));
             bs.towers[lane, 0].Hit(Random.Range(5, 10));
             bs.units[lane, 0].Hit(Random.Range(5, 10));
             bs.home.Hit(Random.Range(5, 10));
-
         }
 
         internal void Hit(int v)
         {
+            if (hp == 0) return;
             hp -= v;
+            if (hp <= 0)
+            {
+                hp = 0;
+                Name = "Dead " + Name;
+            }
         }
     }
 }
