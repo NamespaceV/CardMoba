@@ -31,11 +31,14 @@ public class UnitScript : MonoBehaviour, IPointerDownHandler
 
         NameText.text = u.Name;
         HpText.text = $"{u.hp} / {u.hpMax}";
+
+        NameText.fontStyle = bs.selected == u ? FontStyles.Bold : FontStyles.Normal;
+        NameText.faceColor = bs.selected == u ? Color.red : Color.white;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.HitUnit(lane, pos, Random.Range(1, 5));
+        bs.SelectUnit(lane, pos);
     }
 
     internal void Init(int lane, int pos)

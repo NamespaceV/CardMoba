@@ -16,45 +16,70 @@
             home = new Home(this);
             for (var l = 0; l < 3; ++l) {
                 for (int i = 0; i < 2; ++i) {
-                    towers[l, i] = new Tower();
+                    towers[l, i] = new Tower(this, l, i);
                 }
                 for (int i = 0; i < 3; ++i)
                 {
-                    units[l, i] = new Unit();
+                    units[l, i] = new Unit(this, l, i);
                 }
                 for (int i = 0; i < 3; ++i)
                 {
-                    enemies[l, i] = new Enemy();
+                    enemies[l, i] = new Enemy(this, l, i);
                 }
             }
         }
 
-        internal void HitBase(int v)
+        internal void SelectBase()
         {
             selected = home;
         }
 
-        internal void HitEnemy(int lane, int position, int v)
+        internal void SelectEnemy(int lane, int position)
         {
-            enemies[lane,position].hp -= v;
             selected = enemies[lane, position];
         }
 
-        internal void HitUnit(int lane, int position, int v)
+        internal void SelectUnit(int lane, int position)
         {
-            units[lane, position].hp -= v;
             selected = units[lane, position];
         }
 
-        internal void HitTower(int lane, int position, int v)
+        internal void SelectTower(int lane, int position)
         {
-            towers[lane, position].hp -= v;
             selected = towers[lane, position];
+        }
+
+        internal void SelectNothing()
+        {
+            selected = null;
         }
 
         public void EndTurn()
         {
             ++Turns;
+            home.EndTurn();
+
+            for (var l = 0; l < 3; ++l)
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    units[l, i].EndTurn();
+                }
+            }
+            for (var l = 0; l < 3; ++l)
+            {
+                for (int i = 0; i < 2; ++i)
+                {
+                    towers[l, i].EndTurn();
+                }
+            }
+            for (var l = 0; l < 3; ++l)
+            {
+                for (int i = 0; i < 3; ++i)
+                {
+                    enemies[l, i].EndTurn();
+                }
+            }
         }
     }
 }

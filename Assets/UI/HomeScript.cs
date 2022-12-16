@@ -36,6 +36,6 @@ public class HomeScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.HitBase(Random.Range(1, 5));
+        bs.SelectBase();
     }
 }

@@ -28,13 +28,17 @@ public class EnemyScript : MonoBehaviour, IPointerDownHandler
 
     void Update()
     {
-        NameText.text = bs.enemies[lane, position].Name;
-        HpText.text = $"{bs.enemies[lane,position].hp} / {bs.enemies[lane, position].hpMax}";
+        Enemy e = bs.enemies[lane, position];
+        NameText.text = e.Name;
+        HpText.text = $"{e.hp} / {e.hpMax}";
+        
+        NameText.fontStyle = bs.selected == e ? FontStyles.Bold : FontStyles.Normal;
+        NameText.faceColor = bs.selected == e ? Color.red : Color.white;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.HitEnemy(lane, position, Random.Range(1, 5));
+        bs.SelectEnemy(lane, position);
     }
 
     internal void Init(int lane, int position)

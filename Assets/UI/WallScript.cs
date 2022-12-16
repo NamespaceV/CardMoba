@@ -18,11 +18,13 @@ public class WallScript : MonoBehaviour, IPointerDownHandler
     {
         var u = bs.towers[lane, pos];
         HpText.text = $"{u.hp} / {u.hpMax}";
+
+        HpText.faceColor = bs.selected == u ? Color.red : Color.white;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.HitTower(lane, pos, Random.Range(1, 5));
+        bs.SelectTower(lane, pos);
     }
 
     internal void Init(int lane, int pos)

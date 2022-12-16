@@ -57,6 +57,6 @@ public class DetailsScript : MonoBehaviour
     }
 
     public void CloseClicked() {
-        bs.selected = null;
+        bs.SelectNothing();
     }
 }
