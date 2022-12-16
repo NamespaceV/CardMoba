@@ -12,6 +12,7 @@ namespace Assets.Logic
         public Tower[,] towers = new Tower[3, 2];
         public Unit[,]  units = new Unit[3, 3];
         public Enemy[,] enemies = new Enemy[3, 3];
+        public int Turns { get; private set; }
 
         public BoardState()
         {
@@ -30,22 +31,29 @@ namespace Assets.Logic
             }
         }
 
-        internal void hitBase(int v)
+        internal void HitBase(int v)
         {
             baseHp -= v;
         }
 
-        internal void hitEnemy(int lane, int position, int v)
+        internal void HitEnemy(int lane, int position, int v)
         {
             enemies[lane,position].hp -= v;
         }
-        internal void hitUnit(int lane, int position, int v)
+
+        internal void HitUnit(int lane, int position, int v)
         {
             units[lane, position].hp -= v;
         }
-        internal void hitTower(int lane, int position, int v)
+
+        internal void HitTower(int lane, int position, int v)
         {
             towers[lane, position].hp -= v;
+        }
+
+        public void EndTurn()
+        {
+            ++Turns;
         }
     }
 }

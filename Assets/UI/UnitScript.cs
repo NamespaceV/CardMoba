@@ -35,7 +35,7 @@ public class UnitScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.hitUnit(lane, pos, Random.Range(1, 5));
+        bs.HitUnit(lane, pos, Random.Range(1, 5));
     }
 
     internal void Init(int lane, int pos)

@@ -32,6 +32,6 @@ public class BaseScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.hitBase(Random.Range(1, 5));
+        bs.HitBase(Random.Range(1, 5));
     }
 }

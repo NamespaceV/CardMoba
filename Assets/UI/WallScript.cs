@@ -22,7 +22,7 @@ public class WallScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.hitTower(lane, pos, Random.Range(1, 5));
+        bs.HitTower(lane, pos, Random.Range(1, 5));
     }
 
     internal void Init(int lane, int pos)

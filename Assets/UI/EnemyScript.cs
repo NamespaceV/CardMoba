@@ -34,7 +34,7 @@ public class EnemyScript : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        bs.hitEnemy(lane, position, Random.Range(1, 5));
+        bs.HitEnemy(lane, position, Random.Range(1, 5));
     }
 
     internal void Init(int lane, int position)
