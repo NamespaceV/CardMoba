@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -6,6 +5,8 @@ using Zenject;
 public class MainUi : MonoBehaviour
 {
     public GameObject TopBarPrefab;
+    public GameObject DetailsPrefab;
+
     public GameObject HomePrefab;
     public GameObject UnitPrefab;
     public GameObject WallPrefab;
@@ -15,11 +16,11 @@ public class MainUi : MonoBehaviour
     DiContainer diContainer;
 
     private TopBarScript _topBar;
+    private DetailsScript _details;
     private HomeScript _home;
     private UnitScript[,] _units  = new UnitScript[3, 3];
     private WallScript[,] _walls = new WallScript[3, 2];
     private EnemyScript[,] _enemies = new EnemyScript[3, 3];
-
 
     const int MARGIN = 10;
     const int BASE_WIDTH = 140;
@@ -27,8 +28,6 @@ public class MainUi : MonoBehaviour
     const int WALL_WIDTH = 50;
     const int TOP_BAR_H = 90;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         _home = diContainer.InstantiatePrefab(HomePrefab, transform).GetComponent<HomeScript>();
@@ -59,6 +58,8 @@ public class MainUi : MonoBehaviour
         }
 
         _topBar = diContainer.InstantiatePrefab(TopBarPrefab, transform).GetComponent<TopBarScript>();
+
+        _details = diContainer.InstantiatePrefab(DetailsPrefab, transform).GetComponent<DetailsScript>();
     }
 
     internal void TestSpawn()
