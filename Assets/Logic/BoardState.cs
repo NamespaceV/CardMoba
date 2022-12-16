@@ -1,14 +1,11 @@
-﻿
-using System;
-
-namespace Assets.Logic
+﻿namespace Assets.Logic
 {
     class BoardState
     {
         public int Gold = 500;
 
         public ISelectedObject selected;
-        public Home home = new Home();
+        public Home home;
         public Tower[,] towers = new Tower[3, 2];
         public Unit[,]  units = new Unit[3, 3];
         public Enemy[,] enemies = new Enemy[3, 3];
@@ -16,6 +13,7 @@ namespace Assets.Logic
 
         public BoardState()
         {
+            home = new Home(this);
             for (var l = 0; l < 3; ++l) {
                 for (int i = 0; i < 2; ++i) {
                     towers[l, i] = new Tower();
