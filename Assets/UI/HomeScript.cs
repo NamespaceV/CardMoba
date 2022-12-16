@@ -22,12 +22,13 @@ public class HomeScript : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         NameText.text = "Home";
-        SkillsText.text = "+ 50 G";
     }
 
     void Update()
     {
-        HpText.text = $"{bs.home.Hp} / {bs.home.HpMax}";
+        var home = bs.home;
+        HpText.text = $"{home.Hp} / {home.HpMax}";
+        SkillsText.text = $"+ {home.Gatherers} G";
 
         NameText.fontStyle = bs.selected == bs.home ? FontStyles.Bold : FontStyles.Normal;
         NameText.faceColor = bs.selected == bs.home ? Color.red : Color.white;
