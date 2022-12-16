@@ -6,9 +6,9 @@ namespace Assets.Logic
     class BoardState
     {
         public int Gold = 500;
-        public int baseHp = 500;
-        public int baseHpMax = 500;
 
+        public ISelectedObject selected;
+        public Home home = new Home();
         public Tower[,] towers = new Tower[3, 2];
         public Unit[,]  units = new Unit[3, 3];
         public Enemy[,] enemies = new Enemy[3, 3];
@@ -33,22 +33,25 @@ namespace Assets.Logic
 
         internal void HitBase(int v)
         {
-            baseHp -= v;
+            selected = home;
         }
 
         internal void HitEnemy(int lane, int position, int v)
         {
             enemies[lane,position].hp -= v;
+            selected = enemies[lane, position];
         }
 
         internal void HitUnit(int lane, int position, int v)
         {
             units[lane, position].hp -= v;
+            selected = units[lane, position];
         }
 
         internal void HitTower(int lane, int position, int v)
         {
             towers[lane, position].hp -= v;
+            selected = towers[lane, position];
         }
 
         public void EndTurn()

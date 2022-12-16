@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Assets.Logic
 {
-    internal class Unit
+    internal class Unit : ISelectedObject
     {
-        public string Name;
+        public string Name { get; private set; }
         public int hp = 500;
         public int hpMax = 500;
 

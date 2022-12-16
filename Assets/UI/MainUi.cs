@@ -6,18 +6,16 @@ using Zenject;
 public class MainUi : MonoBehaviour
 {
     public GameObject TopBarPrefab;
-    public GameObject BasePrefab;
+    public GameObject HomePrefab;
     public GameObject UnitPrefab;
     public GameObject WallPrefab;
     public GameObject EnemyPrefab;
 
-    private Canvas _canvas;
-
     [Inject]
     DiContainer diContainer;
 
-    private GameObject _topBar;
-    private GameObject _base;
+    private TopBarScript _topBar;
+    private HomeScript _home;
     private UnitScript[,] _units  = new UnitScript[3, 3];
     private WallScript[,] _walls = new WallScript[3, 2];
     private EnemyScript[,] _enemies = new EnemyScript[3, 3];
@@ -33,11 +31,9 @@ public class MainUi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _canvas = transform.parent.GetComponent<Canvas>();
+        _home = diContainer.InstantiatePrefab(HomePrefab, transform).GetComponent<HomeScript>();
+        _home.transform.localPosition = new Vector3(MARGIN, -TOP_BAR_H - MARGIN -300, 0);
 
-        _base = diContainer.InstantiatePrefab(BasePrefab, transform);
-
-        _base.transform.localPosition = new Vector3(MARGIN, -TOP_BAR_H - MARGIN -300, 0);
         for (int lane = 0; lane < 3; ++lane)
         {
             for (int n = 0; n < 3; ++n) {
@@ -62,7 +58,7 @@ public class MainUi : MonoBehaviour
             }
         }
 
-        _topBar = diContainer.InstantiatePrefab(TopBarPrefab, transform);
+        _topBar = diContainer.InstantiatePrefab(TopBarPrefab, transform).GetComponent<TopBarScript>();
     }
 
     internal void TestSpawn()

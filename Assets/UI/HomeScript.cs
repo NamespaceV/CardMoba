@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-public class BaseScript : MonoBehaviour, IPointerDownHandler
+public class HomeScript : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     private TextMeshProUGUI NameText;
@@ -21,13 +21,16 @@ public class BaseScript : MonoBehaviour, IPointerDownHandler
 
     void Start()
     {
-        NameText.text = "Base";
+        NameText.text = "Home";
         SkillsText.text = "+ 50 G";
     }
 
     void Update()
     {
-        HpText.text = $"{bs.baseHp} / {bs.baseHp}";
+        HpText.text = $"{bs.home.Hp} / {bs.home.HpMax}";
+
+        NameText.fontStyle = bs.selected == bs.home ? FontStyles.Bold : FontStyles.Normal;
+        NameText.faceColor = bs.selected == bs.home ? Color.red : Color.white;
     }
 
     public void OnPointerDown(PointerEventData eventData)
