@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Logic.Enemies;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Logic
@@ -7,7 +8,7 @@ namespace Assets.Logic
     {
         public string Name { get; private set; }
 
-        public List<IActionDescription> Actions => new List<IActionDescription>();
+        public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
 
         public int hp = 500;
         public int hpMax = 500;
@@ -15,13 +16,19 @@ namespace Assets.Logic
         private readonly int lane;
         private readonly int pos;
 
-        public Enemy(BoardState boardState, int lane, int pos) {
+        public Enemy(BoardState boardState, int lane, int pos, EnemySO data) {
             bs  = boardState;
             this.lane = lane;
             this.pos = pos;
-            var names = new List<string>() { "Orc", "Goblin", "Troll" };
-            var r = Random.Range(0, names.Count);
-            Name = names[r];
+            
+            Name = data.Name;
+            hp = data.Hp;
+            hpMax = data.Hp;
+
+            foreach (var s in data.Skills)
+            {
+                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { } });
+            }
         }
 
         internal void EndTurn()

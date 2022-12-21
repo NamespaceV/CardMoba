@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets.Logic.Enemies;
+using System;
+using Unity.Mathematics;
 
 namespace Assets.Logic
 {
@@ -12,9 +14,11 @@ namespace Assets.Logic
         public Unit[,]  units = new Unit[3, 3];
         public Enemy[,] enemies = new Enemy[3, 3];
         public int Turns { get; private set; }
+        public StatsScript stats;
 
-        public BoardState()
+        public BoardState(StatsScript stats)
         {
+            this.stats = stats;
             home = new Home(this);
             for (var l = 0; l < 3; ++l) {
                 for (int i = 0; i < 2; ++i) {
@@ -26,7 +30,7 @@ namespace Assets.Logic
                 }
                 for (int i = 0; i < 3; ++i)
                 {
-                    enemies[l, i] = new Enemy(this, l, i);
+                    enemies[l, i] = new Enemy(this, l, i, stats.getRandomEnemy());
                 }
             }
         }

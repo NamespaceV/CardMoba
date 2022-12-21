@@ -818,7 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e366cee19bad57c4f9dcecf54ece746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextMesh: {fileID: 2269817215351082809}
+  TextMesh: {fileID: 4029433357718150911}
   ActionsScrollContent: {fileID: 2017292449259505386}
   ActionDetailPrefab: {fileID: 4029433358631748947, guid: bb8513073ca1cd44f8300bbfc33555ab, type: 3}
 --- !u!1 &4383519145131837610

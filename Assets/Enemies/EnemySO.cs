@@ -6,6 +6,7 @@ namespace Assets.Logic.Enemies
     public class EnemySO : ScriptableObject
     {
         public string Name;
-        public string Hp;
+        public int Hp;
+        public EnemySkillSO[] Skills;
     }
 }

@@ -154,9 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
-  _monoInstallers:
-  - {fileID: 56360823}
-  _installerPrefabs: []
+  _monoInstallers: []
+  _installerPrefabs:
+  - {fileID: 1249155994569973489, guid: ade13c0dd09e777449907b12790a4d48, type: 3}
   _autoRun: 1
   OnPreInstall:
     m_PersistentCalls:
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a80d188e261eff4faa9bb9d09099eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsPrefab: {fileID: 0}
 --- !u!1 &407461613
 GameObject:
   m_ObjectHideFlags: 0
