@@ -35,11 +35,11 @@ RectTransform:
   m_Father: {fileID: 4029433358631748956}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: -10}
-  m_SizeDelta: {x: 160, y: 80}
-  m_Pivot: {x: 1, y: 1}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -10, y: 0}
+  m_SizeDelta: {x: 160, y: 44.663}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7977262686785592717
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3765390075648241249}
-        m_TargetAssemblyTypeName: DetailsActionScript, Assembly-CSharp
-        m_MethodName: ExecuteClicked
+      - m_Target: {fileID: 8325344139853665971}
+        m_TargetAssemblyTypeName: TopBarScript, Assembly-CSharp
+        m_MethodName: EndTurnClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 4029433357718150904}
   - component: {fileID: 4029433357718150911}
   m_Layer: 5
-  m_Name: ActionText
+  m_Name: MainBarText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,11 +167,11 @@ RectTransform:
   m_Father: {fileID: 4029433358631748956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 313.8566, y: -20}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: 0}
+  m_SizeDelta: {x: 1000, y: 50}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4029433357718150904
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -200,16 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gold: 0
-
-    xzc
-
-    zxc
-
-
-    c
-
-    as'
+  m_text: 'Gold: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -236,7 +227,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -272,7 +263,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0.000030517578, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -289,9 +280,9 @@ GameObject:
   - component: {fileID: 4029433358631748956}
   - component: {fileID: 4029433358631748958}
   - component: {fileID: 4029433358631748957}
-  - component: {fileID: 3765390075648241249}
+  - component: {fileID: 8325344139853665971}
   m_Layer: 5
-  m_Name: DetailsAction
+  m_Name: TopBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,10 +306,10 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_SizeDelta: {x: 0, y: 90}
+  m_Pivot: {x: 0.5, y: 0.99999994}
 --- !u!222 &4029433358631748958
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -357,7 +348,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3765390075648241249
+--- !u!114 &8325344139853665971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,7 +357,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4029433358631748947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e51952c790caa4da06cd6d06446a3c, type: 3}
+  m_Script: {fileID: 11500000, guid: b5aff62e28bec4147b62bcc9c50c87a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TextMesh: {fileID: 4029433357718150911}
@@ -436,7 +427,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Do
+  m_text: 'End Turn
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -86,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1515793105110042766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c048aa8dd43406642b07f6b36a719fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0547444b0beaf0241899a11b28d86a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TopBarPrefab: {fileID: 4029433358631748947, guid: 9abec3d47db7a384b9d00787f94bf24f, type: 3}

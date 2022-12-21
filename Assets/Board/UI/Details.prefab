@@ -684,7 +684,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.85
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -815,10 +815,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4029433358631748947}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec493a7fa6d388419711ae4bfd1d470, type: 3}
+  m_Script: {fileID: 11500000, guid: e366cee19bad57c4f9dcecf54ece746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextMesh: {fileID: 4029433357718150911}
+  TextMesh: {fileID: 2269817215351082809}
   ActionsScrollContent: {fileID: 2017292449259505386}
   ActionDetailPrefab: {fileID: 4029433358631748947, guid: bb8513073ca1cd44f8300bbfc33555ab, type: 3}
 --- !u!1 &4383519145131837610
