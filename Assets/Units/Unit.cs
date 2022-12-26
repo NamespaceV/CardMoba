@@ -6,7 +6,7 @@ namespace Assets.Logic
     internal class Unit : ISelectedObject
     {
         public string Name { get; private set; }
-        public List<IActionDescription> Actions => new List<IActionDescription>();
+        public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
 
         public int hp = 500;
         public int hpMax = 500;
@@ -14,14 +14,18 @@ namespace Assets.Logic
         private readonly int lane;
         private readonly int pos;
 
-        public Unit(BoardState boardState, int lane, int pos)
+        public Unit(BoardState boardState, int lane, int pos, Units.UnitSO data)
         {
             bs = boardState;
             this.lane = lane;
             this.pos = pos;
-            var names = new List<string>() { "Archer", "Mage", "Warior", "Miner" };
-            var r = Random.Range(0, names.Count);
-            Name = names[r];
+            Name = data.Name;
+            hp = data.Hp;
+            hpMax = data.Hp;
+            foreach (var s in data.Skills)
+            {
+                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { } });
+            }
         }
 
         internal void EndTurn()

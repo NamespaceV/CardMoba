@@ -26,7 +26,7 @@ namespace Assets.Logic
                 }
                 for (int i = 0; i < 3; ++i)
                 {
-                    units[l, i] = new Unit(this, l, i);
+                    units[l, i] = new Unit(this, l, i, stats.getRandomUnit());
                 }
                 for (int i = 0; i < 3; ++i)
                 {
