@@ -4,7 +4,7 @@ using Unity.Mathematics;
 
 namespace Assets.Logic
 {
-    class BoardState
+    public class BoardState
     {
         public int Gold = 500;
 

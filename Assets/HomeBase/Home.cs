@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Assets.Logic
 {
-    class Home : ISelectedObject
+    public class Home : ISelectedObject
     {
         public string Name => "Base";
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();

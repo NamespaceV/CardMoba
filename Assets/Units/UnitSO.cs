@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Units.UnitSkill;
+using System;
+using UnityEngine;
 
 namespace Assets.Logic.Units
 {
@@ -8,6 +10,8 @@ namespace Assets.Logic.Units
         public int Cost;
         public string Name;
         public int Hp;
-        public UnitSkillSO[] Skills;
+
+        [SerializeReference, SubclassSelector]
+        public UnitSkill[] UnitSkillAttackEffects = Array.Empty<UnitSkill>();
     }
 }

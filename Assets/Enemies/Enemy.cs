@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Logic
 {
-    internal class Enemy : ISelectedObject
+    public class Enemy : ISelectedObject
     {
         public string Name { get; private set; }
 
@@ -33,7 +33,7 @@ namespace Assets.Logic
 
         internal void EndTurn()
         {
-            if (hp == 0) return;
+            if (IsDead()) return;
             bs.units[lane, 2].Hit(Random.Range(5, 10));
             bs.towers[lane, 1].Hit(Random.Range(5, 10));
             bs.units[lane, 1].Hit(Random.Range(5, 10));
@@ -44,13 +44,18 @@ namespace Assets.Logic
 
         internal void Hit(int v)
         {
-            if (hp == 0) return;
+            if (IsDead()) return;
             hp -= v;
             if (hp <= 0)
             {
                 hp = 0;
                 Name = "Dead " + Name;
             }
+        }
+
+        internal bool IsDead()
+        {
+            return hp == 0;
         }
     }
 }

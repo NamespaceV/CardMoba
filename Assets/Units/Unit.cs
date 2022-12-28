@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Assets.Logic
 {
-    internal class Unit : ISelectedObject
+    public class Unit : ISelectedObject
     {
         public string Name { get; private set; }
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
@@ -11,8 +11,8 @@ namespace Assets.Logic
         public int hp = 500;
         public int hpMax = 500;
         private BoardState bs;
-        private readonly int lane;
-        private readonly int pos;
+        public int lane { get; private set; }
+        public int pos { get; private set; }
 
         public Unit(BoardState boardState, int lane, int pos, Units.UnitSO data)
         {
@@ -22,28 +22,45 @@ namespace Assets.Logic
             Name = data.Name;
             hp = data.Hp;
             hpMax = data.Hp;
-            foreach (var s in data.Skills)
+            foreach (var s in data.UnitSkillAttackEffects)
             {
-                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { } });
+                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { s.Apply(bs, this); } });
             }
         }
 
         internal void EndTurn()
         {
-            if (hp == 0) return;
-            bs.enemies[lane, 0].Hit(Random.Range(5, 10));
-            bs.enemies[lane, 1].Hit(Random.Range(5, 10));
-            bs.enemies[lane, 2].Hit(Random.Range(5, 10));
+            if (IsDead()) return;
+            //bs.enemies[lane, 0].Hit(Random.Range(5, 10));
+            //bs.enemies[lane, 1].Hit(Random.Range(5, 10));
+            //bs.enemies[lane, 2].Hit(Random.Range(5, 10));
         }
 
         internal void Hit(int v)
         {
-            if (hp == 0) return;
+            if (IsDead()) return;
             hp -= v;
             if (hp <= 0) {
                 hp = 0;
                 Name = "Dead " + Name;
             }
+        }
+        internal void Heal(int v)
+        {
+            if (IsDead()) return;
+            hp += v;
+            if (hp >= hpMax)
+            {
+                hp = hpMax;
+            }
+        }
+        internal bool IsDead() {
+            return hp == 0;
+        }
+
+        internal bool CanBeHealed()
+        {
+            return IsDead() == false && hp < hpMax;
         }
     }
 }

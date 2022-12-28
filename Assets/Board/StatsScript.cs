@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Logic
 {
-    class StatsScript : MonoBehaviour
+    public class StatsScript : MonoBehaviour
     {
         public EnemySO[] enemyStats;
         public UnitSO[] unitStats;
