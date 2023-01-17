@@ -28,11 +28,6 @@ public class CameraScript : MonoBehaviour
     {
         _screenShakePhase += Time.deltaTime;
         _camera.orthographicSize = GetShakePct() * _initialSize * GetAspectPct();
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            DoAScreenShake();
-        }
     }
 
     private float GetAspectPct()
