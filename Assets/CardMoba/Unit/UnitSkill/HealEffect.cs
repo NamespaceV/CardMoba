@@ -16,7 +16,7 @@ namespace Assets.Units.UnitSkill
         public override void Apply(BoardState bs, Unit attacker)
         {
             int targetId = 2;
-            while (!bs.units[attacker.lane, targetId].CanBeHealed() && targetId >=0)
+            while (targetId >= 0 && !bs.units[attacker.lane, targetId].CanBeHealed())
             {
                 --targetId;
             }

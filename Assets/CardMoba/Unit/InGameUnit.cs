@@ -44,6 +44,5 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         bs.SelectUnit(lane, pos);
-        Debug.Log("clicked");
     }
 }
