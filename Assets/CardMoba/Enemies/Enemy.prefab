@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4395008813020430888}
   - component: {fileID: 8268977796845666474}
-  - component: {fileID: 4269937085215023081}
+  - component: {fileID: 1762208319959876802}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.3019608, g: 0.40000004, b: 0.019607844, a: 1}
+  m_Color: {r: 0.34901962, g: 0.07058824, b: 0.043137256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4269937085215023081
+--- !u!61 &1762208319959876802
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2/30
+  m_text: 2/3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -466,9 +466,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7945703973091781769}
-  - component: {fileID: 953948313439685384}
+  - component: {fileID: 5964177891167102036}
   m_Layer: 0
-  m_Name: Unit
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,7 +493,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &953948313439685384
+--- !u!114 &5964177891167102036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -502,14 +502,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7945703973091781771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4c7e35883c7d1b41bb917c79d917982, type: 3}
+  m_Script: {fileID: 11500000, guid: 7bb595df12234ee43875eadc35b435c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NameText: {fileID: 7945703973579100015}
   HpText: {fileID: 5305439522067574865}
   SkillsText: {fileID: 4589636750935248561}
   lane: 0
-  pos: 0
+  position: 0
 --- !u!1 &7945703973579100017
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Unit
+  m_text: Enemy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

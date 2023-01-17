@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
-public class InGameUnit : MonoBehaviour
+public class InGameUnit : MonoBehaviour, IPointerClickHandler
 {
     [Inject]
     private BoardState bs;
@@ -41,8 +41,9 @@ public class InGameUnit : MonoBehaviour
         NameText.faceColor = bs.selected == u ? Color.red : Color.white;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         bs.SelectUnit(lane, pos);
+        Debug.Log("clicked");
     }
 }
