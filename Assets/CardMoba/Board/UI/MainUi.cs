@@ -36,10 +36,10 @@ public class MainUi : MonoBehaviour
         for (int lane = 0; lane < 3; ++lane)
         {
             for (int n = 0; n < 3; ++n) {
-                _units[lane, n] = diContainer.InstantiatePrefab(UnitPrefab, transform).GetComponent<UnitScript>();
-                _units[lane, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + n * (UNIT_WIDTH + WALL_WIDTH + 2*MARGIN),
-                    -TOP_BAR_H - MARGIN -lane * 300, 0);
-                _units[lane, n].Init(lane, n);
+                //_units[lane, n] = diContainer.InstantiatePrefab(UnitPrefab, transform).GetComponent<UnitScript>();
+                //_units[lane, n].transform.localPosition = new Vector3(MARGIN + BASE_WIDTH + MARGIN + n * (UNIT_WIDTH + WALL_WIDTH + 2*MARGIN),
+                //    -TOP_BAR_H - MARGIN -lane * 300, 0);
+                //_units[lane, n].Init(lane, n);
             }
             for (int n = 0; n < 2; ++n)
             {
