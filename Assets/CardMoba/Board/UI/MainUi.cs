@@ -1,3 +1,4 @@
+using Assets.Units.UnitSkill;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -6,6 +7,7 @@ public class MainUi : MonoBehaviour
 {
     public GameObject TopBarPrefab;
     public GameObject DetailsPrefab;
+    public GameObject DamagePrefab;
 
     [Inject]
     DiContainer diContainer;
@@ -18,6 +20,16 @@ public class MainUi : MonoBehaviour
         _topBar = diContainer.InstantiatePrefab(TopBarPrefab, transform).GetComponent<TopBarScript>();
 
         _details = diContainer.InstantiatePrefab(DetailsPrefab, transform).GetComponent<DetailsScript>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)) {
+            var mScreen = Input.mousePosition;
+            mScreen.z = -1 * (Camera.main.transform.position.z + 2);
+            var mWord = Camera.main.ScreenToWorldPoint(mScreen);
+            DamageEffectScript.CreateDamageEffect(DamagePrefab, Random.Range(10, 50), mWord);
+        }
     }
 
     internal void TestSpawn()
