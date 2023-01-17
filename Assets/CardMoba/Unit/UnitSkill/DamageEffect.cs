@@ -17,7 +17,7 @@ namespace Assets.Units.UnitSkill
         public override void Apply (BoardState bs, Unit attacker)
         {
             int targetId = 0;
-            while (bs.enemies[attacker.lane, targetId].IsDead() && targetId < 3) {
+            while (targetId < 3 && bs.enemies[attacker.lane, targetId].IsDead()) {
                 ++targetId;
             }
             if (targetId < 3) {

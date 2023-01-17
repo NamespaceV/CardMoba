@@ -12,6 +12,9 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
     [Inject]
     private BoardState bs;
 
+    [Inject]
+    private DamageEffectFactory def;
+
     [SerializeField]
     private TextMeshPro NameText;
 
@@ -26,7 +29,17 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
     
     void Start()
     {
-        
+        var u = bs.units[lane, pos];
+        u.OnTakeDamage += (v) => {
+            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
+            if (v < 0) {
+                def.CreateDamageEffect(-v, transform.position + randomV - new Vector3(0, 0, 0.001f), DamageEffectFactory.DamageStyle.Heal);
+            }
+            else
+            {
+                def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f));
+            }
+        };
     }
 
     void Update()

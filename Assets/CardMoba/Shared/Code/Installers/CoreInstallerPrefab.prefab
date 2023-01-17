@@ -45,3 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsPrefab: {fileID: 7204268629659389010, guid: f8288c36954cc3a4eb524abcadb78e46, type: 3}
+  damageEffectPrefab: {fileID: 6370171497124252870, guid: 817f827fda5720d448f1c9150ebb15e0, type: 3}
+  healEffectPrefab: {fileID: 6370171497124252870, guid: fedf7ee66528d134fb6fc9730bd0f667, type: 3}
+  debriesEffectPrefab: {fileID: 6370171497124252870, guid: 61203ad4c7e20844a9b5244f282b1e14, type: 3}

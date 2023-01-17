@@ -9,6 +9,8 @@ namespace Assets.Logic
         public string Name => "Base";
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
         private int actionsAdded;
+        public event System.Action<int> OnTakeDamage;
+
 
         public Home(BoardState boardState) {
             bs = boardState;
@@ -39,6 +41,7 @@ namespace Assets.Logic
         {
             if (Hp == 0) return;
             Hp -= v;
+            OnTakeDamage?.Invoke(v);
             if (Hp <= 0) {
                 Hp = 0;
             }

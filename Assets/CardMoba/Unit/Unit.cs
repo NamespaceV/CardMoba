@@ -7,6 +7,8 @@ namespace Assets.Logic
     {
         public string Name { get; private set; }
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
+        public event System.Action<int> OnTakeDamage;
+
 
         public int hp = 500;
         public int hpMax = 500;
@@ -40,6 +42,7 @@ namespace Assets.Logic
         {
             if (IsDead()) return;
             hp -= v;
+            OnTakeDamage?.Invoke(v);
             if (hp <= 0) {
                 hp = 0;
                 Name = "Dead " + Name;
@@ -49,6 +52,7 @@ namespace Assets.Logic
         {
             if (IsDead()) return;
             hp += v;
+            OnTakeDamage?.Invoke(-v);
             if (hp >= hpMax)
             {
                 hp = hpMax;

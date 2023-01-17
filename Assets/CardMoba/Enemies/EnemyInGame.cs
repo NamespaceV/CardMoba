@@ -21,11 +21,19 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
     [Inject]
     private BoardState bs;
 
+    [Inject]
+    private DamageEffectFactory def;
+
     public int lane;
     public int position;
 
     void Start()
     {
+        Enemy e = bs.enemies[lane, position];
+        e.OnTakeDamage += (v) => {
+            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
+            def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f));
+        };
     }
 
     void Update()

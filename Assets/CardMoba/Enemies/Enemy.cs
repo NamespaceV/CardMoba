@@ -10,6 +10,8 @@ namespace Assets.Logic
 
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
 
+        public event System.Action<int> OnTakeDamage;
+
         public int hp = 500;
         public int hpMax = 500;
         private BoardState bs;
@@ -46,6 +48,7 @@ namespace Assets.Logic
         {
             if (IsDead()) return;
             hp -= v;
+            OnTakeDamage?.Invoke(v);
             if (hp <= 0)
             {
                 hp = 0;

@@ -18,6 +18,7 @@ public class DamageEffectScript : MonoBehaviour
 
     void Start()
     {
-        transform.DOScale(2, 0.5f).Play().OnComplete(() => Destroy(gameObject));
+        transform.localScale = 0.2f * Vector3.one;
+        transform.DOScale(0.5f, 0.5f).Play().OnComplete(() => Destroy(gameObject));
     }
 }

@@ -8,6 +8,7 @@ namespace Assets.Logic
     {
         public int hp = 500;
         public int hpMax = 500;
+        public event System.Action<int> OnTakeDamage;
 
         public Tower(BoardState boardState, int lane, int pos)
         {
@@ -32,6 +33,7 @@ namespace Assets.Logic
         {
             if (hp == 0) return;
             hp -= v;
+            OnTakeDamage?.Invoke(v);
             if (hp < 0)
             {
                 hp = 0;
