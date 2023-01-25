@@ -1,10 +1,11 @@
 ﻿
+using Assets.CardMoba.Board;
 using System;
 using System.Collections.Generic;
 
 namespace Assets.Logic
 {
-    public class Home : ISelectedObject
+    public class Home : ISelectedObject, ITargetable
     {
         public string Name => "Base";
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
@@ -37,7 +38,7 @@ namespace Assets.Logic
             bs.Gold += Gatherers;
         }
 
-        internal void Hit(int v)
+        public void Hit(int v)
         {
             if (Hp == 0) return;
             Hp -= v;

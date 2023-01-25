@@ -1,6 +1,8 @@
-﻿using Assets.Logic.Enemies;
+﻿using Assets.CardMoba.Board;
+using Assets.Logic.Enemies;
 using System;
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 
 namespace Assets.Logic
 {
@@ -53,6 +55,19 @@ namespace Assets.Logic
         internal void SelectTower(int lane, int position)
         {
             selected = towers[lane, position];
+        }
+
+        public ITargetable GetTragetForUnit(int lane) {
+            int targetId = 0;
+            while (targetId < 3 && enemies[lane, targetId].IsDead())
+            {
+                ++targetId;
+            }
+            if (targetId < 3)
+            {
+                return enemies[lane, targetId];
+            }
+            return null;
         }
 
         internal void SelectNothing()

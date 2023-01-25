@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Assets.CardMoba.Board;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Logic
 {
-    public class Tower : ISelectedObject
+    public class Tower : ISelectedObject, ITargetable
     {
         public int hp = 500;
         public int hpMax = 500;
@@ -29,7 +30,7 @@ namespace Assets.Logic
         {
         }
 
-        internal void Hit(int v)
+        public void Hit(int v)
         {
             if (hp == 0) return;
             hp -= v;

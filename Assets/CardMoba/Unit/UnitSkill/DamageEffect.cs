@@ -16,13 +16,7 @@ namespace Assets.Units.UnitSkill
 
         public override void Apply (BoardState bs, Unit attacker)
         {
-            int targetId = 0;
-            while (targetId < 3 && bs.enemies[attacker.lane, targetId].IsDead()) {
-                ++targetId;
-            }
-            if (targetId < 3) {
-                bs.enemies[attacker.lane, targetId].Hit(damage);
-            }
+            bs.GetTragetForUnit(attacker.lane)?.Hit(damage);
         }
     }
 }

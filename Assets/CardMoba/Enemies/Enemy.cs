@@ -1,10 +1,11 @@
-﻿using Assets.Logic.Enemies;
+﻿using Assets.CardMoba.Board;
+using Assets.Logic.Enemies;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Logic
 {
-    public class Enemy : ISelectedObject
+    public class Enemy : ISelectedObject, ITargetable
     {
         public string Name { get; private set; }
 
@@ -44,7 +45,7 @@ namespace Assets.Logic
             bs.home.Hit(Random.Range(5, 10));
         }
 
-        internal void Hit(int v)
+        public void Hit(int v)
         {
             if (IsDead()) return;
             hp -= v;

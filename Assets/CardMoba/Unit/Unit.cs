@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Assets.CardMoba.Board;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Logic
 {
-    public class Unit : ISelectedObject
+    public class Unit : ISelectedObject, ITargetable
     {
         public string Name { get; private set; }
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
@@ -38,7 +39,7 @@ namespace Assets.Logic
             //bs.enemies[lane, 2].Hit(Random.Range(5, 10));
         }
 
-        internal void Hit(int v)
+        public void Hit(int v)
         {
             if (IsDead()) return;
             hp -= v;
