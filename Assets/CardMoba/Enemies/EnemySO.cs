@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Assets.Units.UnitSkill;
+using System;
+using UnityEngine;
 
 namespace Assets.Logic.Enemies
 {
@@ -7,6 +9,8 @@ namespace Assets.Logic.Enemies
     {
         public string Name;
         public int Hp;
-        public EnemySkillSO[] Skills;
+
+        [SerializeReference, SubclassSelector]
+        public EnemySkill[] Skills = Array.Empty<EnemySkill>();
     }
 }

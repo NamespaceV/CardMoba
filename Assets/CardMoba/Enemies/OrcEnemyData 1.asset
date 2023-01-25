@@ -15,4 +15,13 @@ MonoBehaviour:
   Name: Orc
   Hp: 50
   Skills:
-  - {fileID: 11400000, guid: 67b6cae2071d33f40af06e8355652cab, type: 2}
+  - rid: 8980918208262307840
+  references:
+    version: 2
+    RefIds:
+    - rid: 8980918208262307840
+      type: {class: EnemySkillAttack, ns: Assets.Logic.Enemies, asm: Assembly-CSharp}
+      data:
+        Name: Attack
+        damageMin: 14
+        damageMax: 20

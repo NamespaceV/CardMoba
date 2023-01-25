@@ -15,14 +15,12 @@ namespace Assets.Units.UnitSkill
 
         public override void Apply(BoardState bs, Unit attacker)
         {
-            int targetId = 2;
-            while (targetId >= 0 && !bs.units[attacker.lane, targetId].CanBeHealed())
+            for (int i = 2; i >=0;  i--)
             {
-                --targetId;
-            }
-            if (targetId >= 0)
-            {
-                bs.units[attacker.lane, targetId].Heal(heal);
+                if (bs.units[attacker.lane, i].CanBeHealed()) {
+                    bs.units[attacker.lane, i].Heal(heal);
+                    return;
+                }
             }
         }
     }

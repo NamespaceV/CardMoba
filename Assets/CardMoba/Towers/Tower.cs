@@ -46,5 +46,10 @@ namespace Assets.Logic
             hp += 10;
             hpMax += 10;
         }
+
+        internal bool IsDead()
+        {
+            return hp <= 0;
+        }
     }
 }

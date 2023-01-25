@@ -15,5 +15,12 @@ MonoBehaviour:
   Name: Shaman
   Hp: 150
   Skills:
-  - {fileID: 11400000, guid: 67b6cae2071d33f40af06e8355652cab, type: 2}
-  - {fileID: 11400000, guid: 3ff3a8db1b79af643b6f80b9f6b389e4, type: 2}
+  - rid: 8980918208262307841
+  references:
+    version: 2
+    RefIds:
+    - rid: 8980918208262307841
+      type: {class: EnemySkillHeal, ns: Assets.Logic.Enemies, asm: Assembly-CSharp}
+      data:
+        Name: Heal
+        heal: 50

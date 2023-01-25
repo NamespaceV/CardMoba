@@ -70,6 +70,16 @@ namespace Assets.Logic
             return null;
         }
 
+        public ITargetable GetTragetForEnemy(int lane)
+        {
+            if (!units [lane, 2].IsDead()) return units [lane, 2];
+            if (!towers[lane, 1].IsDead()) return towers[lane, 1];
+            if (!units [lane, 1].IsDead()) return units [lane, 1];
+            if (!towers[lane, 0].IsDead()) return towers[lane, 0];
+            if (!units[lane, 0].IsDead())  return units [lane, 0];
+            return home;
+        }
+
         internal void SelectNothing()
         {
             selected = null;

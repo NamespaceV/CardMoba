@@ -1,6 +1,6 @@
 ﻿using Assets.CardMoba.Board;
-using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Logic
 {
@@ -9,7 +9,6 @@ namespace Assets.Logic
         public string Name { get; private set; }
         public List<IActionDescription> Actions { get; private set; } = new List<IActionDescription>();
         public event System.Action<int> OnTakeDamage;
-
 
         public int hp = 500;
         public int hpMax = 500;
@@ -34,9 +33,8 @@ namespace Assets.Logic
         internal void EndTurn()
         {
             if (IsDead()) return;
-            //bs.enemies[lane, 0].Hit(Random.Range(5, 10));
-            //bs.enemies[lane, 1].Hit(Random.Range(5, 10));
-            //bs.enemies[lane, 2].Hit(Random.Range(5, 10));
+            if (Actions.Count == 0) return;
+            Actions[Random.Range(0, Actions.Count)].Execute();
         }
 
         public void Hit(int v)

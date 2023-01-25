@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
+using static DamageEffectFactory;
 
 public class EnemyInGame : MonoBehaviour, IPointerDownHandler
 {
@@ -32,7 +33,8 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
         Enemy e = bs.enemies[lane, position];
         e.OnTakeDamage += (v) => {
             var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
-            def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f));
+            var style = v < 0? DamageStyle.Heal : DamageStyle.Normal;
+            def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f), style);
         };
     }
 

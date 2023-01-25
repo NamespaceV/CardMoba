@@ -16,8 +16,8 @@ namespace Assets.Logic
         public int hp = 500;
         public int hpMax = 500;
         private BoardState bs;
-        private readonly int lane;
-        private readonly int pos;
+        public int lane;
+        public int pos;
 
         public Enemy(BoardState boardState, int lane, int pos, EnemySO data) {
             bs  = boardState;
@@ -30,19 +30,15 @@ namespace Assets.Logic
 
             foreach (var s in data.Skills)
             {
-                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { } });
+                Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { s.Apply(bs, this); } });
             }
         }
 
         internal void EndTurn()
         {
             if (IsDead()) return;
-            bs.units[lane, 2].Hit(Random.Range(5, 10));
-            bs.towers[lane, 1].Hit(Random.Range(5, 10));
-            bs.units[lane, 1].Hit(Random.Range(5, 10));
-            bs.towers[lane, 0].Hit(Random.Range(5, 10));
-            bs.units[lane, 0].Hit(Random.Range(5, 10));
-            bs.home.Hit(Random.Range(5, 10));
+            if (Actions.Count == 0) return;
+            Actions[Random.Range(0, Actions.Count)].Execute();
         }
 
         public void Hit(int v)
@@ -60,6 +56,22 @@ namespace Assets.Logic
         internal bool IsDead()
         {
             return hp == 0;
+        }
+
+        internal bool CanBeHealed()
+        {
+            return !IsDead() && hp < int.MaxValue;
+        }
+
+        internal void Heal(int v)
+        {
+            if (IsDead()) return;
+            hp += v;
+            OnTakeDamage?.Invoke(-v);
+            if (hp >= hpMax)
+            {
+                hp = hpMax;
+            }
         }
     }
 }
