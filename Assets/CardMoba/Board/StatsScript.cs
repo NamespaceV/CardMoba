@@ -10,6 +10,8 @@ namespace Assets.Logic
         public EnemySO[] enemyStats;
         public UnitSO[] unitStats;
 
+        public Sprite DeadSprite;
+
 
         internal EnemySO getRandomEnemy()
         {

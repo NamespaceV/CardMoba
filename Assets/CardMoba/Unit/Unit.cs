@@ -44,11 +44,11 @@ namespace Assets.Logic
         {
             if (IsDead()) return;
             hp -= v;
-            OnTakeDamage?.Invoke(v);
             if (hp <= 0) {
                 hp = 0;
                 Name = "Dead " + Name;
             }
+            OnTakeDamage?.Invoke(v);
         }
         internal void Heal(int v)
         {

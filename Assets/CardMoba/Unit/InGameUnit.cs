@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
@@ -27,6 +28,9 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private SpriteRenderer Avatar;
 
+    [Inject]
+    private StatsScript stats;
+
     public int lane;
     public int pos;
     
@@ -36,13 +40,10 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
         Avatar.sprite = u.template.Avatar;
         u.OnTakeDamage += (v) => {
             var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0.01f, 0.02f));
-            if (v < 0) {
-                def.CreateDamageEffect(-v, transform.position + randomV - new Vector3(0, 0, 0.001f), DamageEffectFactory.DamageStyle.Heal);
-            }
-            else
-            {
-                def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f));
-            }
+            var style = v < 0 ? DamageEffectFactory.DamageStyle.Heal : DamageEffectFactory.DamageStyle.Normal;
+            def.CreateDamageEffect(-v, transform.position + randomV - new Vector3(0, 0, 0.001f), style);
+            if (u.IsDead()) { Avatar.sprite = stats.DeadSprite; }
+
         };
     }
 

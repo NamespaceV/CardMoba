@@ -28,6 +28,9 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
     [Inject]
     private DamageEffectFactory def;
 
+    [Inject]
+    private StatsScript stats;
+
     public int lane;
     public int position;
 
@@ -39,6 +42,7 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
             var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0.01f, 0.02f));
             var style = v < 0? DamageStyle.Heal : DamageStyle.Normal;
             def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f), style);
+            if (e.IsDead() ) { Avatar.sprite = stats.DeadSprite; }
         };
     }
 
