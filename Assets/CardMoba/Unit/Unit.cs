@@ -16,15 +16,18 @@ namespace Assets.Logic
         public int lane { get; private set; }
         public int pos { get; private set; }
 
-        public Unit(BoardState boardState, int lane, int pos, Units.UnitSO data)
+        public Units.UnitSO template;
+
+        public Unit(BoardState boardState, int lane, int pos, Units.UnitSO template)
         {
             bs = boardState;
+            this.template = template;
             this.lane = lane;
             this.pos = pos;
-            Name = data.Name;
-            hp = data.Hp;
-            hpMax = data.Hp;
-            foreach (var s in data.UnitSkillAttackEffects)
+            Name = template.Name;
+            hp = template.Hp;
+            hpMax = template.Hp;
+            foreach (var s in template.UnitSkillAttackEffects)
             {
                 Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { s.Apply(bs, this); } });
             }

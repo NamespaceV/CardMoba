@@ -15,6 +15,7 @@ MonoBehaviour:
   Cost: 300
   Name: Mage
   Hp: 50
+  Avatar: {fileID: 21300000, guid: 7fcce7125b53cbd4aacb48071d30b943, type: 3}
   UnitSkillAttackEffects:
   - rid: 7928753824231849989
   references:

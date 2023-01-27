@@ -15,6 +15,7 @@ MonoBehaviour:
   Cost: 50
   Name: Pickmen
   Hp: 300
+  Avatar: {fileID: 21300000, guid: f6fd153ab9efcfb4595786082519b424, type: 3}
   UnitSkillAttackEffects:
   - rid: 7928753824231849988
   references:

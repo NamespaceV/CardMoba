@@ -24,14 +24,18 @@ public class InGameUnit : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private TextMeshPro SkillsText;
 
+    [SerializeField]
+    private SpriteRenderer Avatar;
+
     public int lane;
     public int pos;
     
     void Start()
     {
         var u = bs.units[lane, pos];
+        Avatar.sprite = u.template.Avatar;
         u.OnTakeDamage += (v) => {
-            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
+            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0.01f, 0.02f));
             if (v < 0) {
                 def.CreateDamageEffect(-v, transform.position + randomV - new Vector3(0, 0, 0.001f), DamageEffectFactory.DamageStyle.Heal);
             }

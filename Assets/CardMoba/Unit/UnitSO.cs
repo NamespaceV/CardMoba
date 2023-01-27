@@ -11,6 +11,8 @@ namespace Assets.Logic.Units
         public string Name;
         public int Hp;
 
+        public Sprite Avatar;
+
         [SerializeReference, SubclassSelector]
         public UnitSkill[] UnitSkillAttackEffects = Array.Empty<UnitSkill>();
     }

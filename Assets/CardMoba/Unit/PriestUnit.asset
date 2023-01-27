@@ -15,6 +15,7 @@ MonoBehaviour:
   Cost: 150
   Name: Priest
   Hp: 50
+  Avatar: {fileID: 21300000, guid: bb9754094a74ec24bb0cdd9d579ebb20, type: 3}
   UnitSkillAttackEffects:
   - rid: 7928753824231849987
   references:

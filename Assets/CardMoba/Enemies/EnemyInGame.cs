@@ -36,7 +36,7 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
         Enemy e = bs.enemies[lane, position];
         Avatar.sprite = e.template.AvatarSprite;
         e.OnTakeDamage += (v) => {
-            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
+            var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0.01f, 0.02f));
             var style = v < 0? DamageStyle.Heal : DamageStyle.Normal;
             def.CreateDamageEffect(v, transform.position + randomV - new Vector3(0, 0, 0.001f), style);
         };

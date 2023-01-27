@@ -15,6 +15,7 @@ MonoBehaviour:
   Cost: 100
   Name: Archer
   Hp: 100
+  Avatar: {fileID: 21300000, guid: 7698c18a4387cc6419f28ec7c50c1ad5, type: 3}
   UnitSkillAttackEffects:
   - rid: 7928753824231849990
   references:
