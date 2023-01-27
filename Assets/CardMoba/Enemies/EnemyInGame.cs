@@ -19,6 +19,9 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private TextMeshPro SkillsText;
 
+    [SerializeField]
+    private SpriteRenderer Avatar;
+
     [Inject]
     private BoardState bs;
 
@@ -31,6 +34,7 @@ public class EnemyInGame : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         Enemy e = bs.enemies[lane, position];
+        Avatar.sprite = e.template.AvatarSprite;
         e.OnTakeDamage += (v) => {
             var randomV = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), -Random.Range(0, 0.01f));
             var style = v < 0? DamageStyle.Heal : DamageStyle.Normal;

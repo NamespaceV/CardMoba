@@ -13,22 +13,25 @@ namespace Assets.Logic
 
         public event System.Action<int> OnTakeDamage;
 
+        public EnemySO template;
+
         public int hp = 500;
         public int hpMax = 500;
         private BoardState bs;
         public int lane;
         public int pos;
 
-        public Enemy(BoardState boardState, int lane, int pos, EnemySO data) {
+        public Enemy(BoardState boardState, int lane, int pos, EnemySO template) {
             bs  = boardState;
             this.lane = lane;
             this.pos = pos;
-            
-            Name = data.Name;
-            hp = data.Hp;
-            hpMax = data.Hp;
+            this.template = template;
 
-            foreach (var s in data.Skills)
+            Name = template.Name;
+            hp = template.Hp;
+            hpMax = template.Hp;
+
+            foreach (var s in template.Skills)
             {
                 Actions.Add(new SimpleAction() { Name = s.Name, Execute = () => { s.Apply(bs, this); } });
             }

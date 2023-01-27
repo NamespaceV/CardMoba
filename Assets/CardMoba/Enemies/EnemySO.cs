@@ -10,6 +10,8 @@ namespace Assets.Logic.Enemies
         public string Name;
         public int Hp;
 
+        public Sprite AvatarSprite;
+
         [SerializeReference, SubclassSelector]
         public EnemySkill[] Skills = Array.Empty<EnemySkill>();
     }
